@@ -67,8 +67,7 @@ challenge-1/
 
 1. **Clone the repository**
    ```cmd
-   git clone https://github.com/sanskaryo/Soil_classification_project_annam.git
-   cd Soil_classification_project_annam/challenge-1
+   git clone https://github.com/gogulgupta/Soil-classification-project.git
    ```
 
 2. **Install dependencies**
@@ -190,12 +189,5 @@ Alluvial soil       0.97      0.97      0.97       105
 
 ---
 
-## 👤 About Me
-
-**Sanskar Khandelwal**  
-- Kaggle: [sankhuz](https://www.kaggle.com/sankhuz)  
-- Team: TheLastTransformer 🚀
-
-Feel free to ⭐ the repo and share feedback!
 
 

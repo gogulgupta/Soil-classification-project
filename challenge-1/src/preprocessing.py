@@ -1,8 +1,7 @@
 """
-Author: sanskar khandelwal
-Team Name: TheLastTransformer
+Author: Gogul gupta
+Team Name: Shree yantra dynamics
 Team Members: 1
-Leaderboard Rank: 56
 """
 
 
