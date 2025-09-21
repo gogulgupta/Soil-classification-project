@@ -35,7 +35,7 @@ This repository contains my binary classifier solution for the Soil Image Classi
 | Detail          | Description                                 |
 |-----------------|---------------------------------------------|
 | **Organizer**   | Annam.ai × IIT Ropar                        |
-| **Task**        | Binary classification (Soil / Non-Soil)      |
+| **Task**        | Binary classification (Soil / Non-Soil)    |
 | **Deadline**    | May 25, 2025, 11:59 PM IST                  |
 | **Evaluation**  | F1 Score (harmonic mean of Precision & Recall) |
 | **Final Status**| Solo Submission, Finalist                   |
@@ -52,13 +52,9 @@ graph TD
   D --> E[Inference]
   E --> F[Threshold Tuning]
   F --> G[Final Predictions CSV]
-```
-
----
-
-## 📁 Project Structure
-
-```text
+📁 Project Structure
+text
+Copy code
 challenge2/
 ├── data/                # Dataset & synthetic 'Not Soil' images
 ├── docs/cards/          # Diagrams & cards
@@ -72,82 +68,71 @@ challenge2/
 ├── download.sh          # Data download script
 ├── requirements.txt     # Python dependencies
 └── README.md            # This file
-```
+🏋️‍♂️ Training Highlights
+Input Size: 224×224 px
 
----
+Augmentations: RandomFlip, Rotation, ColorJitter
 
-## 🏋️‍♂️ Training Highlights
+Model Architectures: EfficientNet B0, ResNet variants
 
-- **Input Size:** 224×224 px
-- **Augmentations:** RandomFlip, Rotation, ColorJitter
-- **Model Architectures:** EfficientNet B0, ResNet variants
-- **Loss Function:** Binary Cross-Entropy
-- **Optimization:** Adam, learning rate scheduling
+Loss Function: Binary Cross-Entropy
 
----
+Optimization: Adam, learning rate scheduling
 
-## 🧪 Evaluation & Thresholding
+🧪 Evaluation & Thresholding
+Metric: Macro F1-Score
 
-- **Metric:** Macro F1-Score
-- **Threshold Tuning:** Grid search over [0.1, 0.9] to maximize validation F1.
+Threshold Tuning: Grid search over [0.1, 0.9] to maximize validation F1.
 
-```python
+python
+Copy code
 def tune_threshold(y_true, y_probs):
     thresholds = np.arange(0.1, 0.9, 0.01)
     # evaluate F1 at each thresh... return best
-```  
+📌 Key Learnings
+Data Augmentation significantly improved generalization.
 
----
+EfficientNet performed robustly despite class imbalance.
 
-## 📌 Key Learnings
+Custom Thresholding was crucial to boost F1 score.
 
-- **Data Augmentation** significantly improved generalization.  
-- **EfficientNet** performed robustly despite class imbalance.  
-- **Custom Thresholding** was crucial to boost F1 score.  
-- **Modular Code** ensures reproducibility and ease of experimentation.  
+Modular Code ensures reproducibility and ease of experimentation.
 
----
+🚀 Setup & Run
+Clone repo
 
-## 🚀 Setup & Run
+cmd
+Copy code
+git clone https://github.com/gogulgupta/Soil-classification-project.git
+cd Soil-classification-project/challenge2
+Install dependencies
 
-1. **Clone repo**
-   ```cmd
-   git clone https://github.com/your-username/soil-classification.git
-   cd soil-classification/challenge2
-   ```
-2. **Install dependencies**
-   ```cmd
-   pip install -r requirements.txt
-   ```
-3. **Download data**
-   ```cmd
-   bash download.sh
-   ```
-4. **Prepare synthetic data**
-   ```cmd
-   python src/preprocessing.py
-   ```
-5. **Train model**
-   - Open `notebooks/training.ipynb`, run all cells.
-6. **Run inference**
-   - Open `notebooks/inference.ipynb`, run all cells to generate `submission.csv`.
+cmd
+Copy code
+pip install -r requirements.txt
+Download data
 
----
+cmd
+Copy code
+bash download.sh
+Prepare synthetic data
 
-## 📜 License
+cmd
+Copy code
+python src/preprocessing.py
+Train model
 
-This project is licensed under the MIT License.
+Open notebooks/training.ipynb, run all cells.
 
-🙌 Acknowledgements
-Special thanks to:
+Run inference
 
-IIT Ropar × Annam.ai for organizing the competition
+Open notebooks/inference.ipynb, run all cells to generate submission.csv.
 
-OpenCV, PyTorch, torchvision for open-source magic
-
-The Kaggle community for 💎 helpful kernels & ideas
 
 🚀 Author
-Sanskar – 2nd Year AIML Student
-📍 GLA University | 👨‍💻 Building cool ML tools
-🔗 email - sanskar.khandelwal_cs.aiml23@gla.ac.in
+Gogul Gupta – 3rd Year AIML Student
+📍 Dr. A.P.J. Abdul Kalam Technical University | 👨‍💻 Building cool ML tools
+🔗 Email: gogulguptaji@gmail.com
+
+yaml
+Copy code

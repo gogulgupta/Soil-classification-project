@@ -1,8 +1,6 @@
 <h1>🏆 Soil Classification Challenge Submission</h1>
 
-
-
-<p>This project was developed as part of the Hackathon + Internship opportunity organized by IIT Ropar and Annam.ai. I, Sanskar Khandelwal, participated solo and built ML models for classifying soil types from images. This task aimed to automate soil-type classification to assist in agriculture and sustainability using AI. Special thanks to <strong>Sudarshan Iyengar</strong>, <strong>Madhur Tharuja</strong>, and the entire <strong>Annam AI & IIT Ropar</strong> team for organizing this opportunity!</p>
+<p>This project was developed as part of the Hackathon + Internship opportunity organized by IIT Ropar and Annam.ai. I, Gogul Gupta, participated solo and built ML models for classifying soil types from images. This task aimed to automate soil-type classification to assist in agriculture and sustainability using AI. Special thanks to <strong>Sudarshan Iyengar</strong>, <strong>Madhur Tharuja</strong>, and the entire <strong>Annam AI & IIT Ropar</strong> team for organizing this opportunity!</p>
 
 <p align="center">
   <img src="Full_project_image.png" alt="Project Overview" />
@@ -14,14 +12,14 @@
 
 ## 👤 Participant Details
 
-- **Name:** Sanskar Khandelwal  
-- **Team Name:** TheLastTransformer
-- **Year:** 2nd Year B.Tech CSE 
-- **University:** GLA University, Mathura  
-- **Email:** sanskar.khandelwal_cs.aiml23@gla.ac.in  
+- **Name:** Gogul Gupta  
+- **Team Name:** shree yantra dynamics
+- **Year:** 3nd Year B.Tech CSE (AI&ML)
+- **University:** Dr. A.P.J. Abdul Kalam Technical University 
+- **Email:** gogulguptaji@gmail.com  
 - **Radhe Radhe! 🙏**  
 
-> **Note:** Apologies for minor errors. Initially the entire pipeline was in a single notebook, which has now been refactored into this structured repository.
+> **Note:** Initially the entire pipeline was in a single notebook, which has now been refactored into this structured repository.
 
 ---
 
@@ -31,9 +29,6 @@
 |----------------------------------------------|--------|-------------|--------------|
 | Task 1 - Binary Soil Classification          | 1.000  | 56          | 40           |
 | Task 2 - Multi-Class Soil Image Classification | 0.8989 | 37          | 48           |
-
-
-
 
 ---
 
@@ -56,154 +51,121 @@
 ├── download.sh              # Dataset download script
 ├── submission.csv           # Final submission predictions
 └── README.md                # This file
-```
+Note: Data is excluded due to size; download manually. Large files are ignored via .gitignore.
 
-> **Note:** Data is excluded due to size; download manually. Large files are ignored via `.gitignore`.
+🧠 Approach Overview
+🔹 Task Objective
+Classify soil images into one of the four categories:
 
----
+Alluvial
 
-## 🧠 Approach Overview
+Black
 
-### 🔹 Task Objective
+Clay
 
-Classify soil images into one of the four categories:  
-- Alluvial  
-- Black  
-- Clay  
-- Red
+Red
 
-### 🔹 Modeling Pipeline
+🔹 Modeling Pipeline
+Model Architecture: Transfer learning using pretrained CNNs like ResNet-18, EfficientNet-B0
 
-- **Model Architecture:** Transfer learning using pretrained CNNs like ResNet-18, EfficientNet-B0
-- **Training Strategy:**  
-  - Image normalization, resizing to 224x224  
-  - Stratified train-validation split  
-  - Data augmentation (flip, rotate, brightness)  
-  - Cross-validation for robustness  
-- **Inference:**  
- 
-  - Ensemble averaging for stability  
+Training Strategy:
 
----
+Image normalization, resizing to 224x224
 
-## 🛠️ Tools & Technologies
+Stratified train-validation split
 
-- Python 🐍  
-- PyTorch / Torchvision  
-- Scikit-learn  
-- OpenCV  
-- Matplotlib / Seaborn  
-- Jupyter Notebooks
+Data augmentation (flip, rotate, brightness)
 
----
----
+Cross-validation for robustness
 
-## 📚 Additional Resources
-- **Transcript:** https://drive.google.com/file/d/1eF-W1mjo6NA-FzupMtfFTC-9WZPRY5B3/view?usp=drive_link
-- **Video Explanation:** https://drive.google.com/drive/folders/1pHEEjiZYHQqzNbf4oZW7LKfg8oL2sz5W?usp=drive_link
+Inference:
 
----
-## 📓 Notebooks Breakdown
+Ensemble averaging for stability
 
-### `training.ipynb`
+🛠️ Tools & Technologies
+Python 🐍
 
-- Loads and preprocesses image dataset
-- Applies augmentations and normalizations
-- Extracts features using pretrained CNNs (e.g., ResNet18)
-- Trains classifiers (e.g., fully connected layers or Random Forests)
-- Plots metrics and saves trained models
+PyTorch / Torchvision
 
-### `inference.ipynb`
+Scikit-learn
 
-- Loads saved models and test data
-- Applies albumenations (horizontal/vertical flips, brightness)
-- Generates predictions
-- Outputs `submission.csv` as per competition format
+OpenCV
 
----
+Matplotlib / Seaborn
 
-## 📈 Evaluation Metric
+Jupyter Notebooks
 
-- **Metric Used:** Minimum F1-score across all 4 classes  
-- This ensures balanced performance — even the lowest performing class matters!
 
-```python
+📓 Notebooks Breakdown
+training.ipynb
+Loads and preprocesses image dataset
+
+Applies augmentations and normalizations
+
+Extracts features using pretrained CNNs (e.g., ResNet18)
+
+Trains classifiers (e.g., fully connected layers or Random Forests)
+
+Plots metrics and saves trained models
+
+inference.ipynb
+Loads saved models and test data
+
+Applies augmentations (horizontal/vertical flips, brightness)
+
+Generates predictions
+
+Outputs submission.csv as per competition format
+
+📈 Evaluation Metric
+Metric Used: Minimum F1-score across all 4 classes
+
+python
+Copy code
 from sklearn.metrics import f1_score
 score = min([
     f1_score(y_true, y_pred, average=None)[i] for i in range(4)
 ])
-```
+⚙ Setup Instructions
+Clone the repository
 
----
+bash
+Copy code
+git clone https://github.com/gogulgupta/Soil-classification-project.git
+cd Soil-classification-project
+Install dependencies
 
-## ⚙ Setup Instructions
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/yourusername/soil-classification
-cd soil-classification
-```
-
-2. **Install dependencies**
-```bash
+bash
+Copy code
 pip install -r requirements.txt
-```
+Download the dataset
 
-3. **Download the dataset**
-```bash
+bash
+Copy code
 bash download.sh
-```
+Run notebooks
 
-4. **Run notebooks**
-- `notebooks/training.ipynb` → train models  
-- `notebooks/inference.ipynb` → generate `submission.csv`
+notebooks/training.ipynb → train models
 
----
+notebooks/inference.ipynb → generate submission.csv
 
-## ⚡ Why This Approach Works
+⚡ Why This Approach Works
+✅ Combines deep learning feature extraction with classical ML models
+✅ Balanced F1-score strategy ensures no class is ignored
+✅ Simple yet effective – reproducible and scalable
 
-✅ Combines deep learning feature extraction with classical ML models  
-✅ Balanced F1-score strategy ensures no class is ignored  
-✅ Simple yet effective – reproducible and scalable  
-
----
-
-## 💬 Reflections
-
+💬 Reflections
 I participated solo in this challenge and acknowledge that my submission may not compete head-to-head with full teams, but I gave my best and learned a lot! Looking forward to the next rounds if selected. Jai Shree Krishna 🙏
 
----
+ain
 
-## 🤝 Acknowledgements
-
-- Organizers: Annam.ai, IIT Ropar  
-- Pretrained models: Resnet 18  
-- Community support and dataset providers  
-- Inspiration from top teams and peers in this domain
-
----
-
-## 👨‍💻 Author
-
-**Sanskar Khandelwal**  
-Email: `sanskar.khandelwal_cs.aiml23@gla.ac.in`  
-University: GLA University, Mathura  
+👨‍💻 Author
+Gogul Gupta
+Email: gogulguptaji@gmail.com
+University: Dr. A.P.J. Abdul Kalam Technical University
 Connect with me for ML, AI, or vision projects! 🚀
-kaggle username - sankhuz
 
----
-
-## 📬 Contact
-
+📬 Contact
 If any reviewer or peer wants to discuss this submission or connect:
-- **Email:** sanskar.khandelwal_cs.aiml23@gla.ac.in
 
----
-
-## ⚖️ License
-
-This project is submitted as part of a Hackathon and is intended for academic and educational review. Please contact me for further use.
-
-
-
-<p align="center"><strong>🚜 Towards Sustainable AI-Powered Agriculture! 🚀</strong></p>
+Email: gogulguptaji@gmail.com
